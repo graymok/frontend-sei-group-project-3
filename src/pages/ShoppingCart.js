@@ -21,7 +21,15 @@ const ShoppingCart = () => {
         <div>
             <h1>Shopping Cart</h1>
             {/* if cart exists, check if cart is empty, display cart items if cart exists and is not empty, display loading message if cart doesn't exist */}
-            {cart ? cart.length === 0 ? 'Empty cart' : cart.map((item, i) => {return <div>{item.product.name} - ${item.product.price}</div>}) : 'Getting cart...'}
+            {cart ? cart.length === 0 ? 'Empty cart' : cart.map((item, i) => {return (
+                <div key={i}>
+                    <span>
+                        {item.product.name} - ${item.product.price}
+                        <input type="button" value="Remove" onClick={() => {removeFromCart(item.createdAt)}} />
+                    </span>
+                </div>
+            )
+            }) : 'Getting cart...'}
             {
                 checkingOut ?
                     <form className="checkoutForm">

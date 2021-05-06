@@ -40,11 +40,14 @@ const CartProvider = ({children}) => {
     }
     
     // remove item from cart
-    const removeFromCart = async (productId) =>
+    const removeFromCart = async (createdAt) =>
     {
         // delete item
-        const res = await axios.delete(`${process.env.REACT_APP_BACKEND_URL}cart/${productId}`, {
-            headers: { Authorization: user.id }
+        const res = await axios.delete(`${process.env.REACT_APP_BACKEND_URL}cart`, {
+            headers: { Authorization: user.id },
+            data: {
+                createdAt: createdAt
+            }
         })
         console.log(res.data.message);
         getCart();
