@@ -1,3 +1,91 @@
-.App {
-  text-align: center;
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,700;0,900;1,400;1,700;1,900&display=swap');
+
+.main-container {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 400;
+}
+
+.nav-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  height: 70px;
+  border-bottom: 1px solid hsl(0, 0%, 70%);
+  box-shadow: 0 1px 5px hsla(0, 0%, 70%, 0.53);
+  position: sticky;
+  top: 0;
+  right: 0;
+  left: 0;
+  z-index: 10;
+  background-color: hsla(0, 0%, 100%, 0.95);
+}
+
+.nav-left, .nav-right {
+  width: 50%;
+}
+
+.nav-left {
+  margin-left: 50px;
+}
+
+.nav-right {
+  margin-right: 50px;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: baseline;
+}
+
+.nav-link, .nav-link-button, .nav-link-logout {
+  margin-left: 20px;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 16px;
+  padding: 8px;
+}
+
+.nav-link, .nav-link-logout {
+  color: hsl(230, 0%, 30%);
+}
+
+.nav-link-logout {
+  cursor: pointer;
+}
+
+.nav-link-button {
+  border: 1px solid hsl(230, 0%, 80%);
+  background-color: hsl(230, 0%, 80%);
+  border-radius: 18px;
+  color: hsl(230, 0%, 30%);
+  padding-left: 32px;
+  padding-right: 32px;
+  box-shadow: 0 2px 1px hsla(0, 0%, 30%, 0.5);
+}
+
+.nav-logo {
+  text-decoration: none;
+  font-weight: 900;
+  font-size: 40px;
+  color: hsl(230, 0%, 30%);
+}
+
+.nav-link:hover, .nav-logo:hover, .nav-link-logout:hover {
+  color: hsl(230, 60%, 40%);
+}
+
+.nav-active {
+  color: hsl(230, 60%, 40%);
+}
+.nav-link-button:hover {
+  color: hsl(230, 60%, 40%);
+  background-color: hsl(230, 60%, 80%);
+  border: 1px solid hsl(230, 60%, 80%);
+  box-shadow: 0 2px 1px hsla(0, 0%, 30%, 0.5);
+}
+
+.nav-active-button {
+  color: hsl(230, 60%, 40%);
+  background-color: hsl(230, 60%, 80%);
+  border: 1px solid hsl(230, 60%, 80%);
+  box-shadow: 0 2px 1px hsla(0, 0%, 30%, 0.5);
 }
