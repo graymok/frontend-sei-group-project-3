@@ -5,6 +5,7 @@ import AllProducts from './pages/AllProducts'
 import AllOrders from './pages/AllOrders'
 import ShoppingCart from './pages/ShoppingCart'
 import NavBar from './components/NavBar'
+import SingleProduct from './components/SingleProduct'
 import { UserContext } from './contexts/UserContext'
 import { useContext, useState, useEffect } from 'react'
 import { Route, Redirect } from 'react-router-dom'
@@ -57,7 +58,7 @@ function App() {
         }} />
         <Route path='/products/:id' render={(routingProps) => {
           if ( user.name !== null ) {
-            return <AllProducts id={routingProps.match.params.id}/>
+            return <SingleProduct id={routingProps.match.params.id}/>
           } else {
             return <Redirect to='/' />
           }
