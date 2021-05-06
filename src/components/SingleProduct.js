@@ -1,7 +1,51 @@
-const SingleProduct = () => {
+import { UserContext } from '../contexts/UserContext'
+import { useContext, useState, useEffect } from 'react'
+import axios from 'axios'
+
+
+const SingleProduct = (props) => {
+
+    const {userState} = useContext(UserContext)
+    const [user] = userState
+
+    const [product, setProduct] = useState({})
+
+    const getSingleProduct = async () => {
+        const userId = localStorage.getItem('userId')
+        let response = await axios.get(`${process.env.REACT_APP_BACKEND_URL}products/${props.id}`, {
+            headers: {
+                Authorization: userId
+            }
+        })
+        console.log(response)
+        setProduct(response.data.product)
+    }
+
+    useEffect(() => {
+        getSingleProduct()
+    // eslint-disable-next-line react-hooks/exhaustive-deps         
+    }, [])
+
+
     return (
-        <div>
-            Hello from SingleProduct!
+        <div className="single-container">
+            { product !== null ? 
+            <div className="product-listing-container" >
+                    <div className="product-listing-details">
+                        <div className="product-listing-left">
+                            <img className="product-listing-image" src={product.image} alt={product.name} />
+                        </div>
+                        <div className="product-listing-right">
+                            <span className="product-listing-title">{product.name}</span>
+                            <span className="product-listing-price">${product.price}</span>
+                            <span className="product-listing-description">{product.description}</span>
+                        </div>
+                    </div>
+                    <span className="product-listing-add">Add to Cart</span>          
+            </div>
+            :
+            <div>Loading...</div>
+            }
         </div>
     )
 }
