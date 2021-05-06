@@ -1,6 +1,12 @@
 import { NavLink } from 'react-router-dom'
+import { useContext } from 'react';
+import { CartContext } from '../contexts/CartContext';
 
 const ProductList = (props) => {
+    // contexts
+    const { cartState, addToCart } = useContext(CartContext);
+    const [ cart ] = cartState;
+
     return (
         <>
             {props.allProducts.map((item) => (
@@ -15,7 +21,7 @@ const ProductList = (props) => {
                             <span className="product-listing-description">{item.description}</span>
                         </div>
                     </NavLink>
-                    <span className="product-listing-add">Add to Cart</span>          
+                    <span className="product-listing-add" onClick={() => {addToCart(item.id)}}>Add to Cart</span>          
                 </div>
             ))}
         </>
