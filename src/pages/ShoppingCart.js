@@ -5,7 +5,7 @@ import axios from 'axios'
 const ShoppingCart = () => {
     // contexts
     const { cartState, totalState, orderTotal, getCart, addToCart, removeFromCart } = useContext(CartContext);
-    const [ cart ] = cartState;
+    const [ cart, setCart ] = cartState;
     const [ total, setTotal ] = totalState;
 
     // states
@@ -22,6 +22,8 @@ const ShoppingCart = () => {
     const handleCheckout = (e) => {
         e.preventDefault()
         createOrder()
+        setCart([])
+        setCheckingOut(false)
     }
 
     const createOrder = async () => {
