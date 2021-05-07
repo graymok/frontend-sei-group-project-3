@@ -11,6 +11,10 @@ const CartProvider = ({children}) => {
     const [user] = userState
 
     const [cart, setCart] = useState([])
+    const [total, setTotal] = useState(0);
+    const [prices, setPrices] = useState([0]);
+
+    let orderTotal = 0;
 
     // functions
 
@@ -21,7 +25,11 @@ const CartProvider = ({children}) => {
         const res = await axios.get(`${process.env.REACT_APP_BACKEND_URL}cart`, {
             headers: { Authorization: user.id }
         })
-        console.log(res)
+        // console.log(res)
+        res.data.cart.map((item) => {
+            orderTotal = orderTotal + item.product.price
+        })
+        setTotal(orderTotal);
         // set cart to state
         setCart(res.data.cart);
     }
@@ -57,7 +65,8 @@ const CartProvider = ({children}) => {
         cartState: [cart, setCart],
         getCart,
         addToCart,
-        removeFromCart
+        removeFromCart,
+        totalState: [total, setTotal]
     }
 
     return (

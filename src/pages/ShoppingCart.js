@@ -3,8 +3,9 @@ import { CartContext } from '../contexts/CartContext';
 
 const ShoppingCart = () => {
     // contexts
-    const { cartState, getCart, addToCart, removeFromCart } = useContext(CartContext);
+    const { cartState, totalState, orderTotal, getCart, addToCart, removeFromCart } = useContext(CartContext);
     const [ cart ] = cartState;
+    const [ total, setTotal ] = totalState;
 
     // states
     const [checkingOut, setCheckingOut] = useState(false);
@@ -37,6 +38,13 @@ const ShoppingCart = () => {
                     </form>
                     :
                     null
+            }
+            {
+                cart ? cart.length === 0 ?
+                    <h2>Price:</h2>
+                    :
+                    <h2>Price: {total}</h2>
+                    : null
             }
         </div>
     )
