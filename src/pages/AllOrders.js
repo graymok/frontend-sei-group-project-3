@@ -1,7 +1,50 @@
+import { UserContext } from '../contexts/UserContext'
+import { useContext, useState, useEffect } from 'react'
+import axios from 'axios'
+import SingleOrder from '../components/SingleOrder'
+
 const AllOrders = () => {
+
+    const {userState} = useContext(UserContext)
+    const [user] = userState
+
+    const [allOrders, setAllOrders] = useState([])
+
+    const getAllOrders = async () => {
+        let response = await axios.get(`${process.env.REACT_APP_BACKEND_URL}orders`, {
+            headers: {
+                Authorization: user.id
+            }
+        })
+        console.log(response.data.orders)
+        setAllOrders(response.data.orders)
+    }
+
+    useEffect(() => {
+        getAllOrders()
+    // eslint-disable-next-line react-hooks/exhaustive-deps  
+    }, [])
+    // extra call to get all orders to refresh orders on checkout redirect from shopping cart
+    useEffect(getAllOrders, []);
+
     return (
-        <div>
-            Hello from AllOrders!
+        <div className="orders-container">
+            { allOrders ? allOrders.length === 0 ? <h1>no orders</h1> : allOrders.map((item, i) => {
+                return (
+                    <div key={i}>
+                        <span>{item.address}</span>
+                        <div>
+                            {item.cart_items.map((cartItem, i) => {
+                                return (
+                                    <div key={i}>
+                                        {cartItem.product.name}
+                                    </div>
+                                )
+                            })}
+                        </div>
+                    </div>
+                )
+            }) : <h1>Getting orders</h1>}
         </div>
     )
 }
