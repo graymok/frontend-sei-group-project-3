@@ -44,7 +44,8 @@ const ShoppingCart = () => {
                     <h2>Price:</h2>
                     :
                     <h2>Price: {total}</h2>
-                    : null
+                    : 
+                    null
             }
         </div>
     )
