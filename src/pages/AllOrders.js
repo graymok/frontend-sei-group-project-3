@@ -11,10 +11,9 @@ const AllOrders = () => {
     const [allOrders, setAllOrders] = useState([])
 
     const getAllOrders = async () => {
-        const userId = localStorage.getItem('userId')
         let response = await axios.get(`${process.env.REACT_APP_BACKEND_URL}orders`, {
             headers: {
-                Authorization: userId
+                Authorization: user.id
             }
         })
         console.log(response.data.orders)
@@ -24,7 +23,9 @@ const AllOrders = () => {
     useEffect(() => {
         getAllOrders()
     // eslint-disable-next-line react-hooks/exhaustive-deps  
-    }, [])    
+    }, [])
+    // extra call to get all orders to refresh orders on checkout redirect from shopping cart
+    useEffect(getAllOrders, []);
 
     return (
         <div className="orders-container">
