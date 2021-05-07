@@ -1,4 +1,4 @@
-import { useState, useContext } from 'react'
+import { useContext } from 'react'
 import { UserContext } from '../contexts/UserContext'
 import axios from 'axios'
 
@@ -66,7 +66,7 @@ const Registration = (props) => {
             <div className="form-container-register">
                 <span className="form-headline">Let's get started!</span>
                 <form className="form-inputs" onSubmit={handleRegister}>
-                    <label className="input-label" htmlFor="register-name">First Name</label>
+                    <label className="input-label" htmlFor="register-name">Name</label>
                     <input className="input-field" value={props.name} onChange={(e) => {props.setName(e.target.value)}} required />
                     <label className="input-label" htmlFor="register-email">Email</label>
                     <input className="input-field" value={props.email} onChange={(e) => {props.setEmail(e.target.value)}} required />
