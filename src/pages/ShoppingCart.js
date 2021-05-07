@@ -1,6 +1,7 @@
 import { useContext, useEffect, useState } from 'react';
 import { CartContext } from '../contexts/CartContext';
 import axios from 'axios'
+import { Redirect } from 'react-router-dom'
 
 const ShoppingCart = () => {
     // contexts
@@ -15,6 +16,7 @@ const ShoppingCart = () => {
     const [zip, setZip] = useState('');
     const [state, setState] = useState('');
     const [card, setCard] = useState('');
+    const [redirect, setRedirect] = useState(false)
 
     // on component load
     useEffect(getCart, []);
@@ -24,6 +26,7 @@ const ShoppingCart = () => {
         createOrder()
         setCart([])
         setCheckingOut(false)
+        setRedirect(true)
     }
 
     const createOrder = async () => {
@@ -38,12 +41,12 @@ const ShoppingCart = () => {
                 Authorization: userId
             }
         })
-        console.log(response)
     }
 
 
     return (
         <div className="cart-container">
+            { redirect && <Redirect to='/orders' />}
             { checkingOut &&
                 <div className="checkout-container">
                     <form className="checkoutForm" onSubmit={handleCheckout}>
