@@ -21,7 +21,7 @@ const SingleOrder = (props) => {
           headers: { Authorization: userId },
         }
       );
-      console.log(response);
+      console.log(response.data.order);
       setOrder(response.data.order[0]);
     } catch (error) {
       console.log("can not find item");
@@ -41,7 +41,13 @@ const SingleOrder = (props) => {
           <div>Total: ${order.total}</div>
           {order.cart_items
             ? order.cart_items.map((item, i) => {
-                return <SingleProduct id={item.id} key={item.id} />;
+                return (
+                  <SingleProduct
+                    id={item.productId}
+                    key={item.productId}
+                    button={false}
+                  />
+                );
               })
             : null}
         </div>

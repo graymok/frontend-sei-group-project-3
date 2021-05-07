@@ -92,7 +92,12 @@ function App() {
           path="/products/:id"
           render={(routingProps) => {
             if (user.name !== null) {
-              return <SingleProduct id={routingProps.match.params.id} />;
+              return (
+                <SingleProduct
+                  id={routingProps.match.params.id}
+                  button={true}
+                />
+              );
             } else {
               return <Redirect to="/" />;
             }
