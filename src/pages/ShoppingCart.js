@@ -49,18 +49,20 @@ const ShoppingCart = () => {
             { redirect && <Redirect to='/orders' />}
             { checkingOut &&
                 <div className="checkout-container">
+                    
                     <form className="checkoutForm" onSubmit={handleCheckout}>
-                        <label htmlFor="address">Shipping Address</label>
-                        <input type="text" value={address} onChange={(e) => {setAddress(e.target.value)}} />
-                        <label htmlFor="city">City</label>
-                        <input type="text" value={city} onChange={(e) => {setCity(e.target.value)}} />
-                        <label htmlFor="state">State</label>
-                        <input type="text" value={state} onChange={(e) => {setState(e.target.value)}} />
-                        <label htmlFor="zip-code">Zip Code</label>
-                        <input type="text" value={zip} onChange={(e) => {setZip(e.target.value)}} />
-                        <label htmlFor="credit">Credit Card</label>
-                        <input type="text" value={card} onChange={(e) => {setCard(e.target.value)}} />
-                        <input type="submit" value="Submit Payment" />
+                        <span className="checkout-headline">Mailing and payment information:</span>
+                        <label className="checkout-label" htmlFor="address">Shipping Address</label>
+                        <input className="checkout-input" type="text" value={address} onChange={(e) => {setAddress(e.target.value)}} />
+                        <label className="checkout-label" htmlFor="city">City</label>
+                        <input className="checkout-input" type="text" value={city} onChange={(e) => {setCity(e.target.value)}} />
+                        <label className="checkout-label" htmlFor="state">State</label>
+                        <input className="checkout-input" type="text" value={state} onChange={(e) => {setState(e.target.value)}} />
+                        <label className="checkout-label" htmlFor="zip-code">Zip Code</label>
+                        <input className="checkout-input" type="text" value={zip} onChange={(e) => {setZip(e.target.value)}} />
+                        <label className="checkout-label" htmlFor="credit">Credit Card</label>
+                        <input className="checkout-input" type="text" value={card} onChange={(e) => {setCard(e.target.value)}} />
+                        <input className="checkout-submit" type="submit" value="Submit Payment" />
                     </form>
                 </div>    
             }
@@ -79,12 +81,12 @@ const ShoppingCart = () => {
             {
                 cart ? cart.length === 0 ?
                     <div className="cart-payment-container">
-                        <span className="cart-total-price">Price:</span>
+                        <span className="cart-total-price">Total: $0</span>
                     </div>
 
                     :
                     <div className="cart-payment-container">
-                        <span className="cart-total-price">Price: {total}</span>
+                        <span className="cart-total-price">Total: ${total}</span>
                         { checkingOut === false ? 
                         <span className="cart-checkout" onClick={()=>{
                             return setCheckingOut(true)

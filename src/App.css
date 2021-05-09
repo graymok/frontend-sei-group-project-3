@@ -97,6 +97,14 @@
   box-shadow: 0 2px 1px hsla(0, 0%, 30%, 0.5);
 }
 
+.nav-headline {
+  margin-left: 20px;
+  font-style: italic;
+  color: hsl(30, 80%, 50%);
+  font-weight: 700;
+  font-size: 14px;
+}
+
 .all-products-container {
   display: flex;
   flex-direction: row;
@@ -222,8 +230,9 @@
   }
 }
 
-
-
+#landing{
+  position: relative;
+}
 
 #desert{
 width: 100%;
@@ -329,28 +338,121 @@ animation: movement 75s linear infinite;
   padding-top: 20px;
 }
 
+.cart-headline {
+  width: 550px;
+  border-bottom: 1px solid hsl(30, 80%, 50%);
+  margin-bottom: 10px;
+  font-weight: 700;
+  font-size: 20px;
+}
+
 .cart-item {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  align-items: center;
   padding: 10px;
-  width: 400px;
-  border: 1px solid green;
+  width: 500px;
+  height: 30px;
+  border: 1px solid hsl(30, 80%, 50%);
+  border-radius: 10px;
+  margin: 5px;
 }
 
 .cart-payment-container {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  align-items: center;
+}
+
+.cart-total-price {
+  margin: 5px;
+  font-weight: 700;
 }
 
 .cart-checkout {
   margin: 10px;
-  border: 1px solid green;
+  border: 1px solid hsl(30, 80%, 50%);
+  background-color: hsl(30, 80%, 50%);
+  color: white;
+  border-radius: 10px;
+  padding: 5px;
+  padding-left: 20px;
+  padding-right: 20px;
 }
 
-.checkout-form {
+.cart-checkout:hover {
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.checkoutForm {
+  display: flex;
+  flex-direction: column;
+  width: 500px;
+  border: 1px solid hsl(30, 80%, 50%);
+  border-radius: 20px;
+  padding: 20px;
+  margin-bottom: 50px;
+}
+
+.checkout-input {
+  margin-bottom: 15px;
+}
+
+.checkout-submit:hover {
+  cursor: pointer;
+}
+
+.checkout-headline {
+  margin-bottom: 10px;
+  font-weight: 700;
+  font-size: 20px;
+}
+
+.orders-container {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
+
+.order-listing {
+  border: 3px solid hsl(30, 80%, 50%);
+  width: 500px;
+  height: 100px;
+  overflow: auto;
+  margin: 10px;
+  padding: 10px;
+}
+
+.order-listing:hover {
+  transform: scale(1.02, 1.02);
+}
+
+.order-navlink {
+  text-decoration: none;
+  display: flex;
+  flex-direction: column;
+  color: black;
+}
+
+.order-number {
+  font-weight: 700;
+  font-size: 20px;
+  border-bottom: 1px solid hsl(230, 0%, 30%);
+  margin-bottom: 5px;
+}
+
+.order-address {
+  margin-bottom: 10px;
+}
+
+.order-details, .order-products {
+  font-size: 14px;
+}
+
+.order-details {
+  font-weight: 700;
+}
+

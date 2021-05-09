@@ -14,7 +14,7 @@ const NavBar = (props) => {
           <div className="nav-left">
             <NavLink className="nav-logo" to="/products">
               Sahara
-            </NavLink>
+            </NavLink><span className="nav-headline">Like Amazon, But Hotter!</span>
           </div>
           <div className="nav-right">
             <NavLink

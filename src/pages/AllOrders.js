@@ -11,11 +11,12 @@ const AllOrders = () => {
   const [allOrders, setAllOrders] = useState([]);
 
   const getAllOrders = async () => {
+    const userId = localStorage.getItem('userId')
     let response = await axios.get(
       `${process.env.REACT_APP_BACKEND_URL}orders`,
       {
         headers: {
-          Authorization: user.id,
+          Authorization: userId
         },
       }
     );
@@ -36,14 +37,16 @@ const AllOrders = () => {
         allOrders.length === 0 ? (
           <h1>no orders</h1>
         ) : (
-          allOrders.map((item, i) => {
+          allOrders.map((item) => {
             return (
-              <div key={i}>
-                <NavLink exact to={`/orders/${item.id}`}>
-                  <span>{item.address}</span>
+              <div className="order-listing" key={item.id}>
+                <NavLink className="order-navlink" exact to={`/orders/${item.id}`}>
+                  <span className="order-number">Order: {item.id}</span>  
+                  <span className="order-address">Mail to: {item.address.replaceAll('|',', ')}</span>
+                  <span className="order-details">Order Details: </span>
                   <div>
                     {item.cart_items.map((cartItem, i) => {
-                      return <div key={i}>{cartItem.product.name}</div>;
+                      return <div className="order-products" key={i}>{cartItem.product.name}</div>;
                     })}
                   </div>
                 </NavLink>

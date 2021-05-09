@@ -13,7 +13,7 @@ const SingleOrder = (props) => {
   const [order, setOrder] = useState({});
 
   const getSingleOrder = async () => {
-    const userId = localStorage.getItem("userId");
+    const userId = localStorage.getItem('userId');
     try {
       let response = await axios.get(
         `${process.env.REACT_APP_BACKEND_URL}orders/${props.id}`,
@@ -34,17 +34,17 @@ const SingleOrder = (props) => {
 
   return (
     <div className="single-container">
-      {order !== null ? (
+      {Object.keys(order).length > 0 ? (
         <div className="order-listing-container">
           <h2>Order: {order.id}</h2>
-          <div>Ship to: {order.address}</div>
+          <div>Ship to: {order.address.replaceAll('|', ', ')}</div>
           <div>Total: ${order.total}</div>
           {order.cart_items
             ? order.cart_items.map((item, i) => {
                 return (
                   <SingleProduct
                     id={item.productId}
-                    key={item.productId}
+                    key={i}
                     button={false}
                   />
                 );
