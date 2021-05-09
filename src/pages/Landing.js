@@ -11,7 +11,9 @@ const Landing = () => {
         <img id="logo" src={Logo}></img>
       </div>
       <img id="desert" src={Background}></img>
-      <img id="clouds" src={Clouds}></img>
+      <div className="cloud-container">
+        <img id="clouds" src={Clouds}></img>
+      </div>
     </div>
   );
 };
