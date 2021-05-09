@@ -6,6 +6,10 @@
 
 }
 
+.body-container {
+  width: 100%;
+}
+
 .registration-container {
   display: flex;
   flex-direction: column;
@@ -232,6 +236,13 @@
 
 #landing{
   position: relative;
+
+}
+
+.cloud-container {
+  position: absolute;
+  overflow: hidden;
+  width: 100%;
 }
 
 #desert{
@@ -245,12 +256,11 @@ z-index: -1;
 #clouds{
 width: 100%;
 overflow: hidden;
-object-fit: contain;
-position: absolute;
+object-fit: cover;
 z-index: 0;
 height: 300px;
-width: auto;
-animation: movement 75s linear infinite;
+animation: movement 10s linear infinite;
+
 
 }
 
@@ -259,10 +269,11 @@ animation: movement 75s linear infinite;
     transform: translate(0vw);
 }
 100% {
-    transform: translate(200vw);
+    transform: translate(100vw);
 }
 
 }
+
 
 .form-container, .form-container-register {
   display: flex;
